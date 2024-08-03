@@ -1,0 +1,53 @@
+name: Update AdGuard Rules
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天运行一次
+  workflow_dispatch:
+
+jobs:
+  update-rules:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install requests
+      run: pip install requests
+
+    - name: Download AdGuard DNS Rules
+      run: |
+        curl -o filter_adguard.txt https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+
+    - name: Download Anti-Ad Rules
+      run: |
+        curl -o filter_antiad.txt https://anti-ad.net/adguard.txt
+
+    - name: Download and extract sing-box
+      run: |
+        wget -O sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.10.0-alpha.27/sing-box-1.10.0-alpha.27-linux-amd64.tar.gz
+        tar -xzvf sing-box.tar.gz
+        chmod +x sing-box-1.10.0-alpha.27-linux-amd64/sing-box
+        mv sing-box-1.10.0-alpha.27-linux-amd64/sing-box .
+
+    - name: Convert AdGuard Rules using sing-box
+      run: ./sing-box rule-set convert --type adguard --output filter_adguard.srs filter_adguard.txt
+
+    - name: Convert Anti-Ad Rules using sing-box
+      run: ./sing-box rule-set convert --type adguard --output filter_antiad.srs filter_antiad.txt
+
+    - name: Commit and push changes
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add filter_adguard.srs filter_antiad.srs
+        git commit -m "Update AdGuard and Anti-Ad rules"
+        git push https://$GH_TOKEN@github.com/${{ github.repository }}.git HEAD:main
