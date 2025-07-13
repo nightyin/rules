@@ -49,7 +49,8 @@ jobs:
 
     - name: Build Surge DOMAIN-SET list (AdGuard → Surge)
       run: |
-        go run ./rules/main.go          # 默认输出 adguard-dns-surge.txt
+        chmod +x ./adguardFilter
+        ./adguardFilter 
 
     - name: Commit and push changes
       env:
