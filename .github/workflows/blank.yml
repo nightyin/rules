@@ -42,6 +42,15 @@ jobs:
     - name: Convert Anti-Ad Rules using sing-box
       run: ./sing-box rule-set convert --type adguard --output filter_antiad.srs filter_antiad.txt
 
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '>=1.22'
+
+    - name: Build Surge DOMAIN-SET list (AdGuard → Surge)
+      run: |
+        go run ./rules/main.go          # 默认输出 adguard-dns-surge.txt
+
     - name: Commit and push changes
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
