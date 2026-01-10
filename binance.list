@@ -1,8 +1,8 @@
-host-keyword,mokexapp
-host-keyword,binance
-host-keyword,saasexch
-ip-cidr,47.107.0.0/16
-ip-cidr,39.108.0.0/16
-ip-cidr,54.150.106.0/24
-ip-cidr,52.68.117.0/24
-ip-cidr,35.77.148.0/24
+host-keyword,mokexapp,binance
+host-keyword,binance,binance
+host-keyword,saasexch,binance
+ip-cidr,47.107.0.0/16,binance
+ip-cidr,39.108.0.0/16,binance
+ip-cidr,54.150.106.0/24,binance
+ip-cidr,52.68.117.0/24,binance
+ip-cidr,35.77.148.0/24,binance
