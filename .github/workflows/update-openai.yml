@@ -1,0 +1,59 @@
+name: Update OpenAI Rules
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # 每天一次（UTC 0点）
+  workflow_dispatch:
+
+jobs:
+  update-openai:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Download upstream openai.json (sing branch)
+        run: |
+          curl -L --fail \
+            -o openai.sing.json \
+            https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.json
+
+      - name: Build Surge list from sing-box JSON
+        run: |
+          python3 openai_json_to_surge.py openai.sing.json openai.surge.list
+
+      - name: Download sing-box
+        run: |
+          VERSION="1.10.0-alpha.27"
+          ARCH="linux-amd64"
+          wget -O sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}-${ARCH}.tar.gz"
+          tar -xzf sing-box.tar.gz
+          chmod +x "sing-box-${VERSION}-${ARCH}/sing-box"
+          mv "sing-box-${VERSION}-${ARCH}/sing-box" ./sing-box
+
+      - name: Compile sing-box rule-set (.srs)
+        run: |
+          ./sing-box rule-set compile --output openai.srs openai.sing.json
+
+      - name: Commit & Push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add openai.sing.json openai.surge.list openai.srs
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git commit -m "chore: update OpenAI rules"
+          git push
