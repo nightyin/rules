@@ -29,11 +29,15 @@ jobs:
         run: |
           python3 openai_json_to_surge.py openai.sing.json openai.list
 
-      - name: Fix Surge DOMAIN-REGEX for webpubsub (rewrite \S/\d)
+      - name: Surge normalize (drop DOMAIN-REGEX, add DOMAIN-KEYWORD)
         run: |
-          sed -i.bak \
-            's|^DOMAIN-REGEX,\^chatgpt-async-webps-prod-\\S\\+-\\d\\+\\.webpubsub\\.azure\\.com\\$$|DOMAIN-REGEX,^chatgpt-async-webps-prod-[A-Za-z0-9_-]+-[0-9]+\\.webpubsub\\.azure\\.com$|g' \
-            openai.list
+          # Surge 不支持 DOMAIN-REGEX：全部删除
+          sed -i.bak '/^DOMAIN-REGEX,/d' openai.list
+
+          # 添加更窄的匹配规则（避免重复）
+          grep -q '^DOMAIN-KEYWORD,chatgpt-async-webps$' openai.list || \
+            echo 'DOMAIN-KEYWORD,chatgpt-async-webps' >> openai.list
+
           rm -f openai.list.bak
 
       - name: Remove temporary json
