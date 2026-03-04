@@ -24,4 +24,4 @@ DOMAIN-SUFFIX,sora.com
 DOMAIN-SUFFIX,turn.livekit.cloud
 
 # --- domain_regex ---
-DOMAIN-REGEX,^chatgpt-async-webps-prod-\S+-\d+\.webpubsub\.azure\.com$
+DOMAIN-KEYWORD,chatgpt-async-webps
