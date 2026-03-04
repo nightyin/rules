@@ -29,6 +29,13 @@ jobs:
         run: |
           python3 openai_json_to_surge.py openai.sing.json openai.list
 
+      - name: Fix Surge DOMAIN-REGEX for webpubsub (rewrite \S/\d)
+        run: |
+          sed -i.bak \
+            's|^DOMAIN-REGEX,\^chatgpt-async-webps-prod-\\S\\+-\\d\\+\\.webpubsub\\.azure\\.com\\$$|DOMAIN-REGEX,^chatgpt-async-webps-prod-[A-Za-z0-9_-]+-[0-9]+\\.webpubsub\\.azure\\.com$|g' \
+            openai.list
+          rm -f openai.list.bak
+
       - name: Remove temporary json
         run: |
           rm -f openai.sing.json
