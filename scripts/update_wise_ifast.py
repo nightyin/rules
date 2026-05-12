@@ -1,0 +1,326 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import html
+import re
+import sys
+import urllib.error
+import urllib.request
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Callable
+
+
+ROOT = Path(__file__).resolve().parents[1]
+USER_AGENT = "nightyin-rules-updater/1.0 (+https://github.com/nightyin/rules)"
+FETCH_TIMEOUT = 20
+IANA_TLD_URL = "https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
+
+DOMAIN_RE = re.compile(
+    r"(?i)(?<![@\w-])(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z][a-z0-9-]{1,62}\b"
+)
+RULE_RE = re.compile(r"^\s*DOMAIN-SUFFIX\s*,\s*([^,#\s]+)", re.IGNORECASE)
+
+MULTI_LABEL_PUBLIC_SUFFIXES = (
+    "com.au",
+    "com.br",
+    "com.cn",
+    "com.hk",
+    "com.my",
+    "com.ph",
+    "com.sg",
+    "com.tw",
+    "co.id",
+    "co.jp",
+    "co.nz",
+    "co.th",
+    "co.uk",
+    "net.cn",
+    "org.uk",
+)
+
+FALLBACK_VALID_TLDS = {
+    "ai",
+    "au",
+    "br",
+    "cn",
+    "co",
+    "com",
+    "hk",
+    "id",
+    "info",
+    "jp",
+    "jobs",
+    "my",
+    "net",
+    "nz",
+    "org",
+    "ph",
+    "se",
+    "sg",
+    "tech",
+    "th",
+    "tw",
+    "uk",
+}
+
+
+@dataclass(frozen=True)
+class RuleConfig:
+    name: str
+    output: str
+    base_domains: tuple[str, ...]
+    source_urls: tuple[str, ...]
+    deny_domains: tuple[str, ...]
+    matcher: Callable[[str], bool]
+
+
+def normalize_domain(domain: str) -> str:
+    domain = domain.strip().lower().strip(".")
+    if domain.startswith("*."):
+        domain = domain[2:]
+    return domain
+
+
+def registrable_domain(host: str) -> str:
+    host = normalize_domain(host)
+    labels = host.split(".")
+    if len(labels) < 2:
+        return ""
+
+    for suffix in MULTI_LABEL_PUBLIC_SUFFIXES:
+        if host.endswith("." + suffix):
+            suffix_labels = suffix.split(".")
+            if len(labels) > len(suffix_labels):
+                return ".".join(labels[-len(suffix_labels) - 1 :])
+
+    return ".".join(labels[-2:])
+
+
+def domain_matches_suffix(domain: str, suffix: str) -> bool:
+    return domain == suffix or domain.endswith("." + suffix)
+
+
+def fetch_text(url: str) -> str:
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(request, timeout=FETCH_TIMEOUT) as response:
+        charset = response.headers.get_content_charset() or "utf-8"
+        body = response.read(5_000_000)
+    return html.unescape(body.decode(charset, errors="replace"))
+
+
+def load_valid_tlds() -> set[str]:
+    try:
+        text = fetch_text(IANA_TLD_URL)
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        print(f"warning: failed to fetch {IANA_TLD_URL}: {exc}", file=sys.stderr)
+        return set(FALLBACK_VALID_TLDS)
+
+    tlds = set(FALLBACK_VALID_TLDS)
+    for line in text.splitlines():
+        line = line.strip().lower()
+        if line and not line.startswith("#"):
+            tlds.add(line)
+    return tlds
+
+
+def extract_domains(text: str, valid_tlds: set[str]) -> set[str]:
+    domains = set()
+    for match in DOMAIN_RE.finditer(text):
+        domain = normalize_domain(match.group(0))
+        tld = domain.rsplit(".", 1)[-1]
+        if tld in valid_tlds:
+            domains.add(domain)
+    return domains
+
+
+def read_existing_rules(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+
+    domains: set[str] = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        match = RULE_RE.match(line)
+        if match:
+            domains.add(normalize_domain(match.group(1)))
+    return domains
+
+
+def valid_tld(domain: str, valid_tlds: set[str]) -> bool:
+    return domain.rsplit(".", 1)[-1] in valid_tlds
+
+
+def accepted_candidate(domain: str, config: RuleConfig) -> str:
+    domain = normalize_domain(domain)
+    if not domain:
+        return ""
+
+    if any(domain_matches_suffix(domain, denied) for denied in config.deny_domains):
+        return ""
+
+    for base in config.base_domains:
+        if domain_matches_suffix(domain, base):
+            return base
+
+    candidate = registrable_domain(domain)
+    if not candidate:
+        return ""
+
+    if any(domain_matches_suffix(candidate, denied) for denied in config.deny_domains):
+        return ""
+
+    if config.matcher(candidate):
+        return candidate
+
+    return ""
+
+
+def discover_domains(config: RuleConfig, valid_tlds: set[str]) -> set[str]:
+    discovered: set[str] = set()
+    for url in config.source_urls:
+        try:
+            text = fetch_text(url)
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            print(f"warning: failed to fetch {url}: {exc}", file=sys.stderr)
+            continue
+
+        for domain in extract_domains(text, valid_tlds):
+            accepted = accepted_candidate(domain, config)
+            if accepted:
+                discovered.add(accepted)
+
+    return discovered
+
+
+def write_rules(config: RuleConfig, domains: set[str]) -> None:
+    lines = [
+        f"# {config.name}",
+        "# Generated by scripts/update_wise_ifast.py",
+        "# Additive update: baseline + existing rules + domains discovered from official sources.",
+        "",
+    ]
+    lines.extend(f"DOMAIN-SUFFIX,{domain}" for domain in sorted(domains))
+    output_path = ROOT / config.output
+    output_path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+def is_wise_domain(domain: str) -> bool:
+    if domain == "wi.se":
+        return True
+
+    label = domain.split(".", 1)[0]
+    return (
+        label == "wise"
+        or label == "transferwise"
+        or label.startswith("wise-")
+        or label.startswith("transferwise-")
+    )
+
+
+def is_ifast_domain(domain: str) -> bool:
+    label = domain.split(".", 1)[0]
+    return (
+        label.startswith("ifast")
+        or label.startswith("fsmone")
+        or label.startswith("fundsupermart")
+        or label.startswith("bondsupermart")
+    )
+
+
+CONFIGS = (
+    RuleConfig(
+        name="Wise",
+        output="wise.list",
+        base_domains=(
+            "wise.com",
+            "transferwise.com",
+            "wise-sandbox.com",
+            "wi.se",
+        ),
+        source_urls=(
+            "https://wise.com/",
+            "https://wise.com/help/",
+            "https://docs.wise.com/api-docs/api-reference/environments",
+            "https://docs.wise.com/api-docs/guides/partner-account",
+            "https://docs.wise.com/guides/developer/sandbox-v2-migration",
+        ),
+        deny_domains=(),
+        matcher=is_wise_domain,
+    ),
+    RuleConfig(
+        name="iFAST",
+        output="ifast.list",
+        base_domains=(
+            "ifastcorp.com",
+            "ifastgb.com",
+            "ifastglobalbank.com",
+            "ifastgb.co.uk",
+            "ifastglobalbank.co.uk",
+            "ifastgm.com",
+            "ifastgm.com.sg",
+            "ifastgm.com.hk",
+            "ifastgm.com.my",
+            "ifastfinancial.com",
+            "ifastfinancial.com.hk",
+            "ifastfinancial.com.cn",
+            "ifastnetwork.com",
+            "fsmone.com",
+            "fsmone.com.hk",
+            "fsmone.com.my",
+            "fundsupermart.com",
+            "fundsupermart.com.hk",
+            "ifastcapital.com.my",
+            "ifastps.com.cn",
+            "ifastgp.com",
+            "ifastgp.com.hk",
+            "ifastpensions.com",
+            "ifastepension.com",
+            "ifastepension.com.hk",
+            "bondsupermart.com",
+            "ifastfm.com",
+            "ifastglobaltrust.com",
+            "ifastfintech.com",
+            "ifasttv.com",
+            "ifastglobalhub.ai",
+        ),
+        source_urls=(
+            "https://www.ifastcorp.com/ifastcorp/contactus/index.tpl",
+            "https://www.ifastcorp.com/ifastcorp/business/business-divisions.tpl",
+            "https://www.ifastcorp.com/ifastcorp/aboutus/global-presence.tpl",
+            "https://www.ifastcorp.com/ifastcorp/home.tpl",
+        ),
+        deny_domains=(
+            "ifastglobalbank.org",
+        ),
+        matcher=is_ifast_domain,
+    ),
+)
+
+
+def main() -> int:
+    valid_tlds = load_valid_tlds()
+
+    for config in CONFIGS:
+        output_path = ROOT / config.output
+        baseline = set(config.base_domains)
+        existing = {
+            accepted
+            for domain in read_existing_rules(output_path)
+            if valid_tld(domain, valid_tlds)
+            for accepted in (accepted_candidate(domain, config),)
+            if accepted
+        }
+        discovered = discover_domains(config, valid_tlds)
+        domains = baseline | existing | discovered
+
+        write_rules(config, domains)
+        print(
+            f"{config.name}: wrote {config.output} "
+            f"(baseline={len(baseline)}, existing={len(existing)}, discovered={len(discovered)}, total={len(domains)})"
+        )
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
