@@ -49,8 +49,10 @@ FALLBACK_VALID_TLDS = {
     "hk",
     "id",
     "info",
+    "io",
     "jp",
     "jobs",
+    "me",
     "my",
     "net",
     "nz",
@@ -227,6 +229,16 @@ def is_ifast_domain(domain: str) -> bool:
     )
 
 
+def is_loqbox_domain(domain: str) -> bool:
+    label = domain.split(".", 1)[0]
+    return label == "loqbox" or label.startswith("loqbox-")
+
+
+def is_monzo_domain(domain: str) -> bool:
+    label = domain.split(".", 1)[0]
+    return label == "monzo" or label.startswith("monzo-")
+
+
 CONFIGS = (
     RuleConfig(
         name="Wise",
@@ -293,6 +305,57 @@ CONFIGS = (
             "ifastglobalbank.org",
         ),
         matcher=is_ifast_domain,
+    ),
+    RuleConfig(
+        name="Loqbox",
+        output="loqbox.list",
+        base_domains=(
+            "loqbox.com",
+            "loqbox.co",
+            "loqbox.co.uk",
+            "loqbox-us.helpscoutdocs.com",
+        ),
+        source_urls=(
+            "https://www.loqbox.com/en-us",
+            "https://www.loqbox.com/en-gb/how-it-works",
+            "https://www.loqbox.com/en-gb/faqs/",
+            "https://www.loqbox.com/en-gb/terms-of-use",
+            "https://www.loqbox.com/en-gb/refund-policy",
+            "https://www.loqbox.com/en-gb/members-agreement",
+            "https://www.loqbox.com/en-gb/cookie-policy",
+        ),
+        deny_domains=(),
+        matcher=is_loqbox_domain,
+    ),
+    RuleConfig(
+        name="Monzo",
+        output="monzo.list",
+        base_domains=(
+            "monzo.com",
+            "monzo.me",
+            "monzo-prod.com",
+            "monzo-s101.com",
+            "monzo.statuspage.io",
+            "api.s101.nonprod-ffs.io",
+            "openbanking.s101.nonprod-ffs.io",
+            "monzo-prod-user-images.imgix.net",
+            "monzo-prod-s3bucketcreator-ffs-web-export.s3-eu-west-1.amazonaws.com",
+            "monzo-prod-qr-challenge.s3.eu-west-1.amazonaws.com",
+            "monzo-prod-s3bucketcreator-bereavement-files.s3.eu-west-1.amazonaws.com",
+            "mondo-image-uploads.s3.amazonaws.com",
+        ),
+        source_urls=(
+            "https://monzo.com/",
+            "https://monzo.com/service-information",
+            "https://monzo.com/help/monzo-with-friends/monzo-me-how-to",
+            "https://docs.monzo.com/",
+            "https://docs.monzo.com/open-banking/",
+            "https://status.monzo.com/",
+        ),
+        deny_domains=(
+            "monzo.xyz",
+        ),
+        matcher=is_monzo_domain,
     ),
 )
 
