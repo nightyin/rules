@@ -239,6 +239,11 @@ def is_monzo_domain(domain: str) -> bool:
     return label == "monzo" or label.startswith("monzo-")
 
 
+def is_neverless_domain(domain: str) -> bool:
+    label = domain.split(".", 1)[0]
+    return label == "neverless" or label.startswith("neverless-")
+
+
 CONFIGS = (
     RuleConfig(
         name="Wise",
@@ -358,6 +363,27 @@ CONFIGS = (
             "monzo.xyz",
         ),
         matcher=is_monzo_domain,
+    ),
+    RuleConfig(
+        name="Neverless",
+        output="neverless.list",
+        base_domains=(
+            "neverless.com",
+        ),
+        source_urls=(
+            "https://neverless.com/",
+            "https://neverless.com/invest",
+            "https://neverless.com/app",
+            "https://neverless.com/download",
+            "https://neverless.com/legal/privacy",
+            "https://neverless.com/legal/terms",
+            "https://neverless.com/.well-known/apple-app-site-association",
+            "https://neverless.com/.well-known/assetlinks.json",
+        ),
+        deny_domains=(
+            "neverless.wtf",
+        ),
+        matcher=is_neverless_domain,
     ),
 )
 
