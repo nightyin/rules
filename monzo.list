@@ -3,6 +3,7 @@
 # Additive update: baseline + existing rules + domains discovered from official sources.
 
 DOMAIN-SUFFIX,api.s101.nonprod-ffs.io
+DOMAIN-SUFFIX,api.sta.monzo-alt.net
 DOMAIN-SUFFIX,mondo-image-uploads.s3.amazonaws.com
 DOMAIN-SUFFIX,monzo-prod-qr-challenge.s3.eu-west-1.amazonaws.com
 DOMAIN-SUFFIX,monzo-prod-s3bucketcreator-bereavement-files.s3.eu-west-1.amazonaws.com

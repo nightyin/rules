@@ -335,6 +335,7 @@ CONFIGS = (
             "monzo.me",
             "monzo-prod.com",
             "monzo-s101.com",
+            "api.sta.monzo-alt.net",
             "monzo.statuspage.io",
             "api.s101.nonprod-ffs.io",
             "openbanking.s101.nonprod-ffs.io",
