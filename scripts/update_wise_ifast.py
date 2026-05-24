@@ -248,6 +248,7 @@ CONFIGS = (
             "transferwise.com",
             "wise-sandbox.com",
             "wi.se",
+            "sdk.fra-01.braze.eu",
         ),
         source_urls=(
             "https://wise.com/",
