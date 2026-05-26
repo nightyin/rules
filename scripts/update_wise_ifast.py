@@ -46,18 +46,25 @@ FALLBACK_VALID_TLDS = {
     "cn",
     "co",
     "com",
+    "de",
+    "eu",
+    "fr",
+    "gr",
     "hk",
     "id",
     "info",
     "io",
+    "it",
     "jp",
     "jobs",
     "me",
     "my",
     "net",
+    "nl",
     "nz",
     "org",
     "ph",
+    "pt",
     "se",
     "sg",
     "tech",
@@ -244,6 +251,16 @@ def is_neverless_domain(domain: str) -> bool:
     return label == "neverless" or label.startswith("neverless-")
 
 
+def is_n26_domain(domain: str) -> bool:
+    label = domain.split(".", 1)[0]
+    return (
+        label == "n26"
+        or label == "number26"
+        or label.startswith("n26-")
+        or label.startswith("number26-")
+    )
+
+
 CONFIGS = (
     RuleConfig(
         name="Wise",
@@ -384,6 +401,45 @@ CONFIGS = (
             "neverless.wtf",
         ),
         matcher=is_neverless_domain,
+    ),
+    RuleConfig(
+        name="N26",
+        output="n26.list",
+        base_domains=(
+            "n26.com",
+            "n26.de",
+            "n26.eu",
+            "n26.fr",
+            "n26.it",
+            "n26.nl",
+            "n26.pt",
+            "n26.gr",
+            "n26.se",
+            "n26.me",
+            "n26.co.uk",
+            "n26.rocks",
+            "number26.de",
+            "number26.eu",
+            "number26.fr",
+            "number26.it",
+            "number26.uk",
+            "tech26.de",
+            "n26.bynder.com",
+            "n26.go2cloud.org",
+        ),
+        source_urls=(
+            "https://n26.com/en-eu",
+            "https://n26.com/en-eu/legal-documents",
+            "https://n26.com/en-eu/imprint",
+            "https://n26.com/en-it/bug-bounty-program",
+            "https://support.n26.com/en-eu/en-de",
+            "https://support.n26.com/en-it/security/open-banking-psd2/psd2-open-banking-for-third-party-providers",
+            "https://github.com/n26/psd2-tpp-docs",
+            "https://app.n26.com/login",
+            "https://get.n26.com/",
+        ),
+        deny_domains=(),
+        matcher=is_n26_domain,
     ),
 )
 
