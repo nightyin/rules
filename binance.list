@@ -1,6 +1,11 @@
 host-keyword,mokexapp,binance
 host-keyword,binance,binance
 host-keyword,saasexch,binance
+host-suffix,appsflayer.com,binance
+host-suffix,bnbstatic.com,binance
+host-suffix,bntrace.com,binance
+host-suffix,bsappapi.com,binance
+host-suffix,nftstatic.com,binance
 ip-cidr,47.106.0.0/16,binance
 ip-cidr,47.107.0.0/16,binance
 ip-cidr,39.108.0.0/16,binance
