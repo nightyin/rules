@@ -457,6 +457,7 @@ CONFIGS = (
             "chase.co.uk",
             "chase.de",
             "link.go.chase",
+            "mpi-prod.zimperium.com",
             "chaseuk.statuspage.io",
             "chaseinternational.qualtrics.com",
             "personalinvesting.jpmorgan.com",
