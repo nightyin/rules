@@ -46,12 +46,14 @@ FALLBACK_VALID_TLDS = {
     "chase",
     "cn",
     "co",
+    "cloud",
     "com",
     "de",
     "eu",
     "fr",
     "gr",
     "hk",
+    "hsbc",
     "id",
     "info",
     "io",
@@ -270,6 +272,16 @@ def is_chase_uk_domain(domain: str) -> bool:
     }
 
 
+def is_hsbc_uk_domain(domain: str) -> bool:
+    return domain in {
+        "hsbc.co.uk",
+        "hsbc.com",
+        "hsbc.com.hk",
+        "hsbc.uk",
+        "cloud.hsbc",
+    }
+
+
 CONFIGS = (
     RuleConfig(
         name="Wise",
@@ -478,6 +490,27 @@ CONFIGS = (
             "chase.com",
         ),
         matcher=is_chase_uk_domain,
+    ),
+    RuleConfig(
+        name="HSBC UK",
+        output="hsbc.list",
+        base_domains=(
+            "hsbc.co.uk",
+            "hsbc.com",
+            "hsbc.com.hk",
+            "hsbc.uk",
+            "cloud.hsbc",
+        ),
+        source_urls=(
+            "https://www.hsbc.co.uk/",
+            "https://www.hsbc.co.uk/ways-to-bank/mobile/",
+            "https://www.hsbc.co.uk/ways-to-bank/online-banking/",
+            "https://www.hsbc.co.uk/open-banking/",
+            "https://www.hsbc.co.uk/.well-known/assetlinks.json",
+            "https://itunes.apple.com/lookup?bundleId=uk.co.hsbc.hsbcukmobilebanking&country=gb",
+        ),
+        deny_domains=(),
+        matcher=is_hsbc_uk_domain,
     ),
 )
 
