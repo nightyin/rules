@@ -43,6 +43,7 @@ FALLBACK_VALID_TLDS = {
     "ai",
     "au",
     "br",
+    "chase",
     "cn",
     "co",
     "com",
@@ -261,6 +262,14 @@ def is_n26_domain(domain: str) -> bool:
     )
 
 
+def is_chase_uk_domain(domain: str) -> bool:
+    return domain in {
+        "chase.co.uk",
+        "chase.de",
+        "link.go.chase",
+    }
+
+
 CONFIGS = (
     RuleConfig(
         name="Wise",
@@ -440,6 +449,34 @@ CONFIGS = (
         ),
         deny_domains=(),
         matcher=is_n26_domain,
+    ),
+    RuleConfig(
+        name="Chase UK",
+        output="chase.list",
+        base_domains=(
+            "chase.co.uk",
+            "chase.de",
+            "link.go.chase",
+            "chaseuk.statuspage.io",
+            "chaseinternational.qualtrics.com",
+            "personalinvesting.jpmorgan.com",
+            "support.personalinvesting.jpmorgan.com",
+        ),
+        source_urls=(
+            "https://www.chase.co.uk/gb/en/",
+            "https://www.chase.co.uk/gb/en/download/",
+            "https://www.chase.co.uk/gb/en/config/env.js",
+            "https://www.chase.co.uk/.well-known/apple-app-site-association",
+            "https://www.chase.co.uk/.well-known/assetlinks.json",
+            "https://www.chase.co.uk/gb/en/information-for-tpps/",
+            "https://www.chase.co.uk/gb/en/product/jpmorgan-personal-investing/",
+            "https://chaseuk.statuspage.io/",
+            "https://itunes.apple.com/lookup?bundleId=com.chase.intl&country=gb",
+        ),
+        deny_domains=(
+            "chase.com",
+        ),
+        matcher=is_chase_uk_domain,
     ),
 )
 
