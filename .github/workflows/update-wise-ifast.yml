@@ -29,13 +29,15 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          if git diff --quiet -- wise.list ifast.list loqbox.list monzo.list neverless.list; then
+          RULE_LISTS="wise.list ifast.list loqbox.list monzo.list neverless.list n26.list chase.list hsbc.list yonder.list"
+
+          if git diff --quiet -- $RULE_LISTS; then
             echo "No rule changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add wise.list ifast.list loqbox.list monzo.list neverless.list
+          git add $RULE_LISTS
           git commit -m "Update financial rules"
           git push
