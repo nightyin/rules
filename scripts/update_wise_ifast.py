@@ -353,6 +353,17 @@ def is_yonder_domain(domain: str) -> bool:
     }
 
 
+def is_giffgaff_domain(domain: str) -> bool:
+    return domain in {
+        "giff.ly",
+        "giffgaff.co.uk",
+        "giffgaff.com",
+        "giffgaff.design",
+        "giffgaff.io",
+        "giffgaffrecycle.com",
+    }
+
+
 CONFIGS = (
     RuleConfig(
         name="Wise",
@@ -617,6 +628,53 @@ CONFIGS = (
             "hotels.yonder.com",
             "help-nl.yonder.com",
             "waitlist.yonder.com",
+        ),
+    ),
+    RuleConfig(
+        name="giffgaff",
+        output="giffgaff.list",
+        base_domains=(
+            "giff.ly",
+            "giffgaff.co.uk",
+            "giffgaff.com",
+            "giffgaff.design",
+            "giffgaff.io",
+            "giffgaffrecycle.com",
+        ),
+        source_urls=(
+            "https://www.giffgaff.com/",
+            "https://www.giffgaff.com/dashboard",
+            "https://www.giffgaff.com/activate",
+            "https://www.giffgaff.com/orders/free-sim",
+            "https://www.giffgaff.com/network-status",
+            "https://community.giffgaff.com/",
+            "https://help.giffgaff.com/",
+            "https://api.certspotter.com/v1/issuances?domain=giffgaff.com&include_subdomains=true&expand=dns_names",
+            "https://itunes.apple.com/lookup?id=571246020&country=gb",
+            "https://play.google.com/store/apps/details?id=com.giffgaffmobile.controller",
+        ),
+        deny_domains=(
+            "ci-giffgaff.com",
+            "giffgaff-uk.com",
+        ),
+        matcher=is_giffgaff_domain,
+        resolve_hosts=(
+            "giffgaff.com",
+            "www.giffgaff.com",
+            "publicapi.giffgaff.com",
+            "id.giffgaff.com",
+            "community.giffgaff.com",
+            "help.giffgaff.com",
+            "api.giffgaff.com",
+            "static.giffgaff.com",
+            "status.giffgaff.com",
+            "support2.giffgaff.com",
+            "returns.giffgaff.com",
+            "giffgaff.co.uk",
+            "giffgaff.io",
+            "giffgaff.design",
+            "giff.ly",
+            "giffgaffrecycle.com",
         ),
     ),
 )

@@ -29,7 +29,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          RULE_LISTS="wise.list ifast.list loqbox.list monzo.list neverless.list n26.list chase.list hsbc.list yonder.list"
+          RULE_LISTS="wise.list ifast.list loqbox.list monzo.list neverless.list n26.list chase.list hsbc.list yonder.list giffgaff.list"
 
           if git diff --quiet -- $RULE_LISTS; then
             echo "No rule changes."
