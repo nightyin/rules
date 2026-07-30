@@ -353,6 +353,13 @@ def is_yonder_domain(domain: str) -> bool:
     }
 
 
+def is_zopa_domain(domain: str) -> bool:
+    return domain in {
+        "zopa.com",
+        "zopa.co.uk",
+    }
+
+
 def is_giffgaff_domain(domain: str) -> bool:
     return domain in {
         "giff.ly",
@@ -628,6 +635,44 @@ CONFIGS = (
             "hotels.yonder.com",
             "help-nl.yonder.com",
             "waitlist.yonder.com",
+        ),
+    ),
+    RuleConfig(
+        name="Zopa Bank",
+        output="zopa.list",
+        base_domains=(
+            "zopa.com",
+            "zopa.co.uk",
+        ),
+        source_urls=(
+            "https://www.zopa.com/",
+            "https://www.zopa.com/.well-known/apple-app-site-association",
+            "https://www.zopa.com/.well-known/assetlinks.json",
+            "https://developer.openbanking-sandbox.zopa.com/perry/developer/welcome",
+            "https://api.certspotter.com/v1/issuances?domain=zopa.com&include_subdomains=true&expand=dns_names",
+            "https://api.certspotter.com/v1/issuances?domain=zopa.co.uk&include_subdomains=true&expand=dns_names",
+            "https://itunes.apple.com/lookup?id=1324011914&country=gb",
+            "https://play.google.com/store/apps/details?id=com.zopa.zeos",
+        ),
+        deny_domains=(),
+        matcher=is_zopa_domain,
+        resolve_hosts=(
+            "zopa.com",
+            "www.zopa.com",
+            "status.zopa.com",
+            "zopa.co.uk",
+            "www.zopa.co.uk",
+            "go.zopa.co.uk",
+            "cdna.zopa.com",
+            "mobile-vgs.zopa.com",
+            "payments.zopa.com",
+            "sso.zopa.com",
+            "as1.openbanking.zopa.com",
+            "auth1.openbanking.zopa.com",
+            "eps.openbanking.zopa.com",
+            "mci.openbanking.zopa.com",
+            "ozone.openbanking.zopa.com",
+            "rs1.openbanking.zopa.com",
         ),
     ),
     RuleConfig(
