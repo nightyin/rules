@@ -45,6 +45,7 @@ MULTI_LABEL_PUBLIC_SUFFIXES = (
 
 FALLBACK_VALID_TLDS = {
     "ai",
+    "app",
     "au",
     "br",
     "chase",
@@ -54,11 +55,13 @@ FALLBACK_VALID_TLDS = {
     "com",
     "de",
     "eu",
+    "es",
     "fr",
     "gr",
     "hk",
     "hsbc",
     "id",
+    "ie",
     "info",
     "io",
     "it",
@@ -76,6 +79,7 @@ FALLBACK_VALID_TLDS = {
     "sg",
     "tech",
     "th",
+    "to",
     "tw",
     "uk",
 }
@@ -358,6 +362,11 @@ def is_zopa_domain(domain: str) -> bool:
         "zopa.com",
         "zopa.co.uk",
     }
+
+
+def is_bunq_domain(domain: str) -> bool:
+    label = domain.split(".", 1)[0]
+    return label == "bunq" or label.startswith("bunq-")
 
 
 def is_giffgaff_domain(domain: str) -> bool:
@@ -676,6 +685,72 @@ CONFIGS = (
         ),
     ),
     RuleConfig(
+        name="bunq Bank",
+        output="bunq.list",
+        base_domains=(
+            "bunq.app",
+            "bunq.com",
+            "bunq.de",
+            "bunq.es",
+            "bunq.fr",
+            "bunq.ie",
+            "bunq.it",
+            "bunq.me",
+            "bunq.nl",
+            "bunq.to",
+            "bunq-prod-model-storage.s3.eu-central-1.amazonaws.com",
+            "bunq-prod-model-storage-public.s3.eu-central-1.amazonaws.com",
+        ),
+        source_urls=(
+            "https://www.bunq.com/",
+            "https://web.bunq.com/",
+            "https://bunq.app/",
+            "https://bunq.me/",
+            "https://bunq.to/",
+            "https://help.bunq.com/",
+            "https://doc.bunq.com/",
+            "https://status.bunq.com/",
+            "https://api.certspotter.com/v1/issuances?domain=bunq.com&include_subdomains=true&expand=dns_names",
+            "https://itunes.apple.com/lookup?id=1021178150&country=nl",
+            "https://play.google.com/store/apps/details?id=com.bunq.android",
+        ),
+        deny_domains=(
+            "bunq.android",
+            "bunq.net",
+        ),
+        matcher=is_bunq_domain,
+        resolve_hosts=(
+            "bunq.app",
+            "bunq.com",
+            "www.bunq.com",
+            "api.bunq.com",
+            "api.oauth.bunq.com",
+            "oauth.bunq.com",
+            "api.web.bunq.com",
+            "web.bunq.com",
+            "apps.bunq.com",
+            "help.bunq.com",
+            "doc.bunq.com",
+            "status.bunq.com",
+            "developer.bunq.com",
+            "public-api.sandbox.bunq.com",
+            "api-oauth.sandbox.bunq.com",
+            "partner-api.sandbox.bunq.com",
+            "bunq.me",
+            "www.bunq.me",
+            "api.bunq.me",
+            "bunq.to",
+            "www.bunq.to",
+            "api.bunq.to",
+            "bunq.de",
+            "bunq.es",
+            "bunq.fr",
+            "bunq.ie",
+            "bunq.it",
+            "bunq.nl",
+        ),
+    ),
+    RuleConfig(
         name="giffgaff",
         output="giffgaff.list",
         base_domains=(
@@ -726,9 +801,22 @@ CONFIGS = (
 
 
 def main() -> int:
+    requested_outputs = set(sys.argv[1:])
+    known_outputs = {config.output for config in CONFIGS}
+    unknown_outputs = requested_outputs - known_outputs
+    if unknown_outputs:
+        print(
+            f"error: unknown rule list(s): {', '.join(sorted(unknown_outputs))}",
+            file=sys.stderr,
+        )
+        return 2
+
     valid_tlds = load_valid_tlds()
 
     for config in CONFIGS:
+        if requested_outputs and config.output not in requested_outputs:
+            continue
+
         output_path = ROOT / config.output
         baseline = set(config.base_domains)
         existing = {
