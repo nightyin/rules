@@ -369,6 +369,14 @@ def is_bunq_domain(domain: str) -> bool:
     return label == "bunq" or label.startswith("bunq-")
 
 
+def is_maya_bank_domain(domain: str) -> bool:
+    return domain in {
+        "maya.ph",
+        "mayabank.ph",
+        "paymaya.com",
+    }
+
+
 def is_giffgaff_domain(domain: str) -> bool:
     return domain in {
         "giff.ly",
@@ -748,6 +756,52 @@ CONFIGS = (
             "bunq.ie",
             "bunq.it",
             "bunq.nl",
+        ),
+    ),
+    RuleConfig(
+        name="Maya Bank Philippines",
+        output="mayabank.list",
+        base_domains=(
+            "maya.ph",
+            "mayabank.ph",
+            "paymaya.com",
+        ),
+        source_urls=(
+            "https://www.mayabank.ph/",
+            "https://www.mayabank.ph/privacy/",
+            "https://www.maya.ph/",
+            "https://www.maya.ph/maya-updates",
+            "https://support.maya.ph/",
+            "https://developers.maya.ph/",
+            "https://api.certspotter.com/v1/issuances?domain=mayabank.ph&include_subdomains=true&expand=dns_names",
+            "https://api.certspotter.com/v1/issuances?domain=maya.ph&include_subdomains=true&expand=dns_names",
+            "https://api.certspotter.com/v1/issuances?domain=paymaya.com&include_subdomains=true&expand=dns_names",
+            "https://itunes.apple.com/lookup?id=991673877&country=ph",
+            "https://play.google.com/store/apps/details?id=com.paymaya",
+        ),
+        deny_domains=(),
+        matcher=is_maya_bank_domain,
+        resolve_hosts=(
+            "mayabank.ph",
+            "www.mayabank.ph",
+            "support.mayabank.ph",
+            "invest.mayabank.ph",
+            "maya.ph",
+            "www.maya.ph",
+            "api.maya.ph",
+            "app.maya.ph",
+            "support.maya.ph",
+            "business.maya.ph",
+            "corporate.maya.ph",
+            "developers.maya.ph",
+            "official.maya.ph",
+            "store.maya.ph",
+            "paymaya.com",
+            "www.paymaya.com",
+            "official.paymaya.com",
+            "cares.paymaya.com",
+            "developers.paymaya.com",
+            "enterprise.paymaya.com",
         ),
     ),
     RuleConfig(
