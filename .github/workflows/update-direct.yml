@@ -1,0 +1,44 @@
+name: Update filtered direct rules
+
+on:
+  schedule:
+    - cron: "23 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-rules
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Test DIRECT set-difference logic
+        run: python -m unittest scripts/test_update_direct.py
+
+      - name: Build policy-safe DIRECT list
+        run: python scripts/update_direct.py
+
+      - name: Commit and push changes
+        run: |
+          if git diff --quiet -- direct.list; then
+            echo "No direct rule changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add direct.list
+          git commit -m "Update filtered direct rules"
+          git push
