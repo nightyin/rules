@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: 1de8ed31bc8d078d4c83f55b3747abad9d67b5d450b6a8eb6d908a067a7c71c2
-# UPSTREAM-DOMAIN-RULES: 111698
+# SOURCE-SHA256: 51199d13dadeb3ea14a79bee0f38545feb2f9c3c34e1a1f407d5b72a5816bac0
+# UPSTREAM-DOMAIN-RULES: 111702
 # EXCLUDED-DOMAIN-RULES: 520
 # REDUNDANT-DOMAIN-RULES: 279
-# RETAINED-DOMAIN-RULES: 110899
-# UPSTREAM-IP-RULES: 3905
+# RETAINED-DOMAIN-RULES: 110903
+# UPSTREAM-IP-RULES: 3906
 # EXCLUSION-IP-RULES: 267
-# RETAINED-IPV4-RULES: 3957
+# RETAINED-IPV4-RULES: 3958
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -3182,6 +3182,7 @@ DOMAIN-SUFFIX,25dx.com
 DOMAIN-SUFFIX,25fe391eb68e3f9c.com
 DOMAIN-SUFFIX,25game.com
 DOMAIN-SUFFIX,25ku.com
+DOMAIN-SUFFIX,25mao.com
 DOMAIN-SUFFIX,25nc.com
 DOMAIN-SUFFIX,25pp.com
 DOMAIN-SUFFIX,25q7ekcc67.com
@@ -42001,6 +42002,7 @@ DOMAIN-SUFFIX,gzjk120.com
 DOMAIN-SUFFIX,gzjkfk.com
 DOMAIN-SUFFIX,gzjkfund.com
 DOMAIN-SUFFIX,gzjkjl.com
+DOMAIN-SUFFIX,gzjkoa.com
 DOMAIN-SUFFIX,gzjkqh.com
 DOMAIN-SUFFIX,gzjkyljt.com
 DOMAIN-SUFFIX,gzjlp.com
@@ -42956,6 +42958,7 @@ DOMAIN-SUFFIX,hanpokou.com
 DOMAIN-SUFFIX,hanpupharm.com
 DOMAIN-SUFFIX,hanqigroup.com
 DOMAIN-SUFFIX,hanqinghb.com
+DOMAIN-SUFFIX,hanqiuming888.com
 DOMAIN-SUFFIX,hanqunfeng.com
 DOMAIN-SUFFIX,hans-ad.com
 DOMAIN-SUFFIX,hanschen.site
@@ -91108,6 +91111,7 @@ DOMAIN-SUFFIX,unclicks.com
 DOMAIN-SUFFIX,under-5.shop
 DOMAIN-SUFFIX,underfill.cc
 DOMAIN-SUFFIX,uneed.com
+DOMAIN-SUFFIX,uneedx.com
 DOMAIN-SUFFIX,unfish.net
 DOMAIN-SUFFIX,ungifts.com
 DOMAIN-SUFFIX,uni-cent.com
@@ -114239,6 +114243,7 @@ IP-CIDR,203.223.19.0/24,no-resolve
 IP-CIDR,203.223.20.0/24,no-resolve
 IP-CIDR,204.77.130.0/24,no-resolve
 IP-CIDR,205.198.19.0/24,no-resolve
+IP-CIDR,206.109.70.0/23,no-resolve
 IP-CIDR,210.2.0.0/23,no-resolve
 IP-CIDR,210.2.4.0/24,no-resolve
 IP-CIDR,210.5.128.0/19,no-resolve
