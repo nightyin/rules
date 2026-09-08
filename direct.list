@@ -3,7 +3,7 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: 304bf3c2e088a7e0d2cb54d4653b875ae65a79f7b1aa325adcbeed6d23c57b6c
+# SOURCE-SHA256: c8fcc16a170c3d86d4ca9bed1304c9655a824fc773b62ecb9badd5491326fd43
 # UPSTREAM-DOMAIN-RULES: 111536
 # EXCLUDED-DOMAIN-RULES: 520
 # REDUNDANT-DOMAIN-RULES: 279
