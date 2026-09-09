@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: c8fcc16a170c3d86d4ca9bed1304c9655a824fc773b62ecb9badd5491326fd43
-# UPSTREAM-DOMAIN-RULES: 111536
+# SOURCE-SHA256: d65af74377ef721bfcf51d3abd0fe6b6b459c419dfedeb193d06dcbaaebb9150
+# UPSTREAM-DOMAIN-RULES: 111537
 # EXCLUDED-DOMAIN-RULES: 520
 # REDUNDANT-DOMAIN-RULES: 279
-# RETAINED-DOMAIN-RULES: 110737
-# UPSTREAM-IP-RULES: 3898
+# RETAINED-DOMAIN-RULES: 110738
+# UPSTREAM-IP-RULES: 3899
 # EXCLUSION-IP-RULES: 267
-# RETAINED-IPV4-RULES: 3950
+# RETAINED-IPV4-RULES: 3951
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -104608,6 +104608,7 @@ DOMAIN-SUFFIX,yuano.cc
 DOMAIN-SUFFIX,yuanpanguoji.com
 DOMAIN-SUFFIX,yuanqiao.net
 DOMAIN-SUFFIX,yuanqiao.pw
+DOMAIN-SUFFIX,yuanqidesk.com
 DOMAIN-SUFFIX,yuanqilt.com
 DOMAIN-SUFFIX,yuanqingsh.com
 DOMAIN-SUFFIX,yuanqisenlin.com
@@ -112397,6 +112398,7 @@ IP-CIDR,114.96.0.0/13,no-resolve
 IP-CIDR,114.104.0.0/14,no-resolve
 IP-CIDR,114.110.0.0/20,no-resolve
 IP-CIDR,114.110.96.0/22,no-resolve
+IP-CIDR,114.110.112.0/22,no-resolve
 IP-CIDR,114.111.0.0/23,no-resolve
 IP-CIDR,114.111.16.0/20,no-resolve
 IP-CIDR,114.111.191.0/24,no-resolve
@@ -114607,7 +114609,7 @@ IP-CIDR,222.126.170.0/23,no-resolve
 IP-CIDR,222.126.172.0/22,no-resolve
 IP-CIDR,222.126.180.0/22,no-resolve
 IP-CIDR,222.126.184.0/22,no-resolve
-IP-CIDR,222.126.188.0/23,no-resolve
+IP-CIDR,222.126.188.0/24,no-resolve
 IP-CIDR,222.126.192.0/22,no-resolve
 IP-CIDR,222.126.196.0/23,no-resolve
 IP-CIDR,222.126.200.0/22,no-resolve
