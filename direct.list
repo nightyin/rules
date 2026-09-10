@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: d65af74377ef721bfcf51d3abd0fe6b6b459c419dfedeb193d06dcbaaebb9150
+# SOURCE-SHA256: 4c4bde88997dceca27b50d6f892e923abccd99f436c9bf568e3b5909e948cdcc
 # UPSTREAM-DOMAIN-RULES: 111537
 # EXCLUDED-DOMAIN-RULES: 520
 # REDUNDANT-DOMAIN-RULES: 279
 # RETAINED-DOMAIN-RULES: 110738
-# UPSTREAM-IP-RULES: 3899
+# UPSTREAM-IP-RULES: 3901
 # EXCLUSION-IP-RULES: 267
-# RETAINED-IPV4-RULES: 3951
+# RETAINED-IPV4-RULES: 3953
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -112422,6 +112422,7 @@ IP-CIDR,114.112.136.0/21,no-resolve
 IP-CIDR,114.112.144.0/21,no-resolve
 IP-CIDR,114.112.200.0/21,no-resolve
 IP-CIDR,114.112.208.0/20,no-resolve
+IP-CIDR,114.113.66.0/24,no-resolve
 IP-CIDR,114.113.88.0/21,no-resolve
 IP-CIDR,114.113.96.0/20,no-resolve
 IP-CIDR,114.113.112.0/22,no-resolve
@@ -112809,6 +112810,7 @@ IP-CIDR,119.37.12.0/24,no-resolve
 IP-CIDR,119.37.192.0/21,no-resolve
 IP-CIDR,119.38.0.0/21,no-resolve
 IP-CIDR,119.38.192.0/19,no-resolve
+IP-CIDR,119.38.224.0/24,no-resolve
 IP-CIDR,119.39.0.0/16,no-resolve
 IP-CIDR,119.40.41.0/24,no-resolve
 IP-CIDR,119.40.64.0/20,no-resolve
@@ -113667,8 +113669,7 @@ IP-CIDR,202.30.124.0/24,no-resolve
 IP-CIDR,202.38.8.0/21,no-resolve
 IP-CIDR,202.38.64.0/18,no-resolve
 IP-CIDR,202.38.128.0/23,no-resolve
-IP-CIDR,202.38.132.0/23,no-resolve
-IP-CIDR,202.38.134.0/24,no-resolve
+IP-CIDR,202.38.132.0/22,no-resolve
 IP-CIDR,202.38.140.0/23,no-resolve
 IP-CIDR,202.38.152.0/23,no-resolve
 IP-CIDR,202.38.164.0/22,no-resolve
@@ -113975,6 +113976,7 @@ IP-CIDR,203.107.1.0/24,no-resolve
 IP-CIDR,203.107.2.0/24,no-resolve
 IP-CIDR,203.107.6.0/24,no-resolve
 IP-CIDR,203.107.13.0/24,no-resolve
+IP-CIDR,203.107.14.0/24,no-resolve
 IP-CIDR,203.107.20.0/22,no-resolve
 IP-CIDR,203.107.26.0/23,no-resolve
 IP-CIDR,203.107.28.0/22,no-resolve
