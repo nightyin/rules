@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: a7fa8c683b50da156df97c9337fbbe9fb54f8994a0b8443e50da53b568e098f6
+# SOURCE-SHA256: 2642703a95a19310d2ac64ef206044f5cbd99bdbda63d5ce8e0eea31b45be949
 # UPSTREAM-DOMAIN-RULES: 111548
 # EXCLUDED-DOMAIN-RULES: 520
 # REDUNDANT-DOMAIN-RULES: 280
 # RETAINED-DOMAIN-RULES: 110748
-# UPSTREAM-IP-RULES: 3901
+# UPSTREAM-IP-RULES: 3904
 # EXCLUSION-IP-RULES: 270
-# RETAINED-IPV4-RULES: 3953
+# RETAINED-IPV4-RULES: 3956
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -112337,6 +112337,7 @@ IP-CIDR,113.47.0.0/18,no-resolve
 IP-CIDR,113.47.64.0/19,no-resolve
 IP-CIDR,113.47.96.0/21,no-resolve
 IP-CIDR,113.47.104.0/22,no-resolve
+IP-CIDR,113.47.108.0/23,no-resolve
 IP-CIDR,113.47.110.0/24,no-resolve
 IP-CIDR,113.47.112.0/20,no-resolve
 IP-CIDR,113.47.128.0/18,no-resolve
@@ -112477,6 +112478,7 @@ IP-CIDR,115.32.52.0/22,no-resolve
 IP-CIDR,115.32.56.0/21,no-resolve
 IP-CIDR,115.32.64.0/19,no-resolve
 IP-CIDR,115.32.104.0/21,no-resolve
+IP-CIDR,115.32.112.0/22,no-resolve
 IP-CIDR,115.32.120.0/21,no-resolve
 IP-CIDR,115.32.128.0/19,no-resolve
 IP-CIDR,115.33.0.0/19,no-resolve
@@ -113206,6 +113208,7 @@ IP-CIDR,124.71.0.0/17,no-resolve
 IP-CIDR,124.71.128.0/18,no-resolve
 IP-CIDR,124.71.192.0/19,no-resolve
 IP-CIDR,124.71.224.0/20,no-resolve
+IP-CIDR,124.71.244.0/23,no-resolve
 IP-CIDR,124.71.250.0/24,no-resolve
 IP-CIDR,124.72.0.0/13,no-resolve
 IP-CIDR,124.88.0.0/13,no-resolve
