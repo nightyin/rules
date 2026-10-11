@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: d170351359d43274d24f8a9e3f46bb1597fdd74f3628582cfd97a17a7c4645b4
+# SOURCE-SHA256: 443916886fce74226c4d4fbb7203fc951beb83c0f5640118ec3d977917020037
 # UPSTREAM-DOMAIN-RULES: 112101
 # EXCLUDED-DOMAIN-RULES: 521
 # REDUNDANT-DOMAIN-RULES: 280
 # RETAINED-DOMAIN-RULES: 111300
-# UPSTREAM-IP-RULES: 3903
+# UPSTREAM-IP-RULES: 3904
 # EXCLUSION-IP-RULES: 270
-# RETAINED-IPV4-RULES: 3955
+# RETAINED-IPV4-RULES: 3956
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -111379,6 +111379,7 @@ IP-CIDR,14.104.0.0/13,no-resolve
 IP-CIDR,14.112.0.0/12,no-resolve
 IP-CIDR,14.134.0.0/15,no-resolve
 IP-CIDR,14.144.0.0/12,no-resolve
+IP-CIDR,14.167.176.0/20,no-resolve
 IP-CIDR,14.204.0.0/15,no-resolve
 IP-CIDR,14.208.0.0/12,no-resolve
 IP-CIDR,14.241.232.0/21,no-resolve
