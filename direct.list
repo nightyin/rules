@@ -3,7 +3,7 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: 9d838299b35ac6c85dc5e62397e1e9dce0d92a70053af5474bd2175d564d9de2
+# SOURCE-SHA256: 29e9aafa767f211316ae577803ebcf9b22f4ea55b20ed6108da7b81b337fdb13
 # UPSTREAM-DOMAIN-RULES: 110893
 # EXCLUDED-DOMAIN-RULES: 517
 # REDUNDANT-DOMAIN-RULES: 279
@@ -112734,7 +112734,7 @@ IP-CIDR,144.255.0.0/16,no-resolve
 IP-CIDR,146.56.192.0/18,no-resolve
 IP-CIDR,146.196.56.0/22,no-resolve
 IP-CIDR,146.196.68.0/22,no-resolve
-IP-CIDR,146.196.112.0/21,no-resolve
+IP-CIDR,146.196.116.0/22,no-resolve
 IP-CIDR,146.222.79.0/24,no-resolve
 IP-CIDR,146.222.81.0/24,no-resolve
 IP-CIDR,146.222.94.0/24,no-resolve
