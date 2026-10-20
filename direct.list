@@ -3,7 +3,7 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: 29e9aafa767f211316ae577803ebcf9b22f4ea55b20ed6108da7b81b337fdb13
+# SOURCE-SHA256: 8e239177aed938183523b25e573866ce576c5af18b5d4743b91c851e49f629bc
 # UPSTREAM-DOMAIN-RULES: 110893
 # EXCLUDED-DOMAIN-RULES: 517
 # REDUNDANT-DOMAIN-RULES: 279
@@ -112066,8 +112066,6 @@ IP-CIDR,118.72.0.0/13,no-resolve
 IP-CIDR,118.80.0.0/15,no-resolve
 IP-CIDR,118.84.0.0/15,no-resolve
 IP-CIDR,118.88.32.0/19,no-resolve
-IP-CIDR,118.88.64.0/18,no-resolve
-IP-CIDR,118.88.128.0/17,no-resolve
 IP-CIDR,118.89.0.0/16,no-resolve
 IP-CIDR,118.102.16.0/20,no-resolve
 IP-CIDR,118.103.164.0/22,no-resolve
@@ -113567,7 +113565,9 @@ IP-CIDR,211.97.160.0/21,no-resolve
 IP-CIDR,211.97.176.0/20,no-resolve
 IP-CIDR,211.97.192.0/18,no-resolve
 IP-CIDR,211.98.0.0/16,no-resolve
-IP-CIDR,211.99.8.0/21,no-resolve
+IP-CIDR,211.99.8.0/22,no-resolve
+IP-CIDR,211.99.12.0/24,no-resolve
+IP-CIDR,211.99.14.0/23,no-resolve
 IP-CIDR,211.99.16.0/23,no-resolve
 IP-CIDR,211.99.25.0/24,no-resolve
 IP-CIDR,211.99.26.0/24,no-resolve
