@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: 8e239177aed938183523b25e573866ce576c5af18b5d4743b91c851e49f629bc
-# UPSTREAM-DOMAIN-RULES: 110893
+# SOURCE-SHA256: 0fa4a88b3713bc7cad49208fd712750aba3f26d0d05cbe8b1fe9675480b8ffd5
+# UPSTREAM-DOMAIN-RULES: 110895
 # EXCLUDED-DOMAIN-RULES: 517
 # REDUNDANT-DOMAIN-RULES: 279
-# RETAINED-DOMAIN-RULES: 110097
-# UPSTREAM-IP-RULES: 3885
+# RETAINED-DOMAIN-RULES: 110099
+# UPSTREAM-IP-RULES: 3888
 # EXCLUSION-IP-RULES: 270
-# RETAINED-IPV4-RULES: 3937
+# RETAINED-IPV4-RULES: 3940
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -85380,6 +85380,8 @@ DOMAIN-SUFFIX,sztxsz.com
 DOMAIN-SUFFIX,szty56.com
 DOMAIN-SUFFIX,sztz.org
 DOMAIN-SUFFIX,sztzzs.com
+DOMAIN-SUFFIX,szu.app
+DOMAIN-SUFFIX,szu.moe
 DOMAIN-SUFFIX,szuavia.org
 DOMAIN-SUFFIX,szudad.com
 DOMAIN-SUFFIX,szunionlab.com
@@ -110716,6 +110718,7 @@ IP-CIDR,60.63.0.0/16,no-resolve
 IP-CIDR,60.160.0.0/11,no-resolve
 IP-CIDR,60.194.0.0/15,no-resolve
 IP-CIDR,60.200.0.0/24,no-resolve
+IP-CIDR,60.200.35.0/24,no-resolve
 IP-CIDR,60.204.0.0/14,no-resolve
 IP-CIDR,60.208.0.0/12,no-resolve
 IP-CIDR,60.232.132.0/23,no-resolve
@@ -110952,6 +110955,7 @@ IP-CIDR,103.30.151.0/24,no-resolve
 IP-CIDR,103.31.200.0/22,no-resolve
 IP-CIDR,103.35.104.0/22,no-resolve
 IP-CIDR,103.35.254.0/24,no-resolve
+IP-CIDR,103.36.28.0/22,no-resolve
 IP-CIDR,103.36.36.0/22,no-resolve
 IP-CIDR,103.36.63.0/24,no-resolve
 IP-CIDR,103.36.96.0/22,no-resolve
@@ -111649,6 +111653,7 @@ IP-CIDR,111.235.180.0/23,no-resolve
 IP-CIDR,111.235.182.0/24,no-resolve
 IP-CIDR,112.0.0.0/10,no-resolve
 IP-CIDR,112.64.0.0/14,no-resolve
+IP-CIDR,112.73.96.0/19,no-resolve
 IP-CIDR,112.74.0.0/16,no-resolve
 IP-CIDR,112.80.0.0/12,no-resolve
 IP-CIDR,112.96.0.0/13,no-resolve
