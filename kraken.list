@@ -1,0 +1,77 @@
+# Kraken (Surge RULE-SET, domains only)
+# Sources checked on 2026-10-21:
+# https://www.kraken.com/
+# https://pro.kraken.com/app
+# https://id.kraken.com/sign-in
+# https://support.kraken.com/
+# https://www.kraken.com/features/security/bug-bounty
+# https://pro.kraken.com/app/frontend-89ca092189d85bc1.js
+# https://pro.kraken.com/app/main-0eb3aabebc0f8e6a.js
+# https://pro.kraken.com/app/vendor-c66f74920ca07cf6.js
+# https://support.kraken.com/_static/js/0de88ffc.js
+# Evidence includes frontend references and conditional integrations allowed by
+# official Content-Security-Policy headers; not a captured mobile App session.
+# Shared provider hosts also match other apps using those exact hosts.
+# Place this rule set before fallback DIRECT rules.
+
+# Website, Pro, sign-in, REST/WebSocket APIs, futures, support and assets.
+DOMAIN-SUFFIX,kraken.com
+DOMAIN-SUFFIX,kraken.onl
+DOMAIN-SUFFIX,payward.com
+DOMAIN-SUFFIX,cryptofacilities.com
+DOMAIN-SUFFIX,cryptofacilities.co.uk
+DOMAIN-SUFFIX,krak.app
+
+# Related assets explicitly listed by Kraken's official bug bounty scope.
+DOMAIN-SUFFIX,cfbenchmarks.com
+DOMAIN-SUFFIX,staked.us
+DOMAIN-SUFFIX,inkonchain.com
+DOMAIN,mainnet.staked.cloud
+
+# Kraken-specific App / Pro / Wallet / Krak links in official frontend bundles.
+DOMAIN,kraken.app.link
+DOMAIN,krakenpro.app.link
+DOMAIN,kwallet.onelink.me
+DOMAIN,k.k.xyz
+DOMAIN,p.k.xyz
+DOMAIN,w.k.xyz
+
+# Zendesk: verified in the official frontend and its public widget bootstrap.
+DOMAIN,kraken.zendesk.com
+DOMAIN,ekr.zendesk.com
+DOMAIN,ekr.zdassets.com
+DOMAIN,static.zdassets.com
+
+# Additional chat destinations permitted by Pro / sign-in CSP headers.
+DOMAIN,kraken1573777824.zendesk.com
+DOMAIN,api.smooch.io
+DOMAIN,media.smooch.io
+DOMAIN,cdn.smooch.io
+DOMAIN-SUFFIX,config.smooch.io
+DOMAIN,v2.zopim.com
+DOMAIN,widget-mediator.zopim.com
+DOMAIN,v2assets.zopim.io
+DOMAIN,v2.zopim.io
+
+# Identity / fraud-prevention integrations: production CSP destinations and
+# exact Nsure SDK endpoints referenced by both Pro and sign-in bundles.
+DOMAIN,api.sardine.ai
+DOMAIN,inquiry.withpersona.com
+DOMAIN,sdk.nsureapi.com
+DOMAIN,sdk-service.nsureapi.com
+DOMAIN,sdk-error-manager-service.nsureapi.com
+DOMAIN,metrics.nsureapi.com
+
+# Payment component referenced by the Pro bundle.
+DOMAIN,checkout-web-components.checkout.com
+# Additional trading endpoint permitted by the Pro CSP.
+DOMAIN,optionsapi.kf0.io
+
+# Configuration / fallback endpoints referenced by the bundled Statsig SDK.
+DOMAIN,api.statsigcdn.com
+DOMAIN,featureassets.org
+DOMAIN,prodregistryv2.org
+DOMAIN,statsigapi.net
+
+# Consent script directly loaded by the official pages.
+DOMAIN,cdn.cookielaw.org
