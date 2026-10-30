@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: bc19b31b413e3ef58c81cb1a3e9b0c6ac3f1660ba788fb8e43febf6095343543
+# SOURCE-SHA256: 812e0f6c742fd570db78dd9171f3fc0ebba665389fdeeff4475f05885a408bb8
 # UPSTREAM-DOMAIN-RULES: 110937
 # EXCLUDED-DOMAIN-RULES: 519
 # REDUNDANT-DOMAIN-RULES: 281
 # RETAINED-DOMAIN-RULES: 110137
-# UPSTREAM-IP-RULES: 3894
+# UPSTREAM-IP-RULES: 3893
 # EXCLUSION-IP-RULES: 269
-# RETAINED-IPV4-RULES: 3946
+# RETAINED-IPV4-RULES: 3945
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -110404,7 +110404,7 @@ IP-CIDR,43.231.170.0/24,no-resolve
 IP-CIDR,43.239.120.0/22,no-resolve
 IP-CIDR,43.239.172.0/23,no-resolve
 IP-CIDR,43.240.0.0/22,no-resolve
-IP-CIDR,43.240.60.0/22,no-resolve
+IP-CIDR,43.240.56.0/21,no-resolve
 IP-CIDR,43.240.72.0/22,no-resolve
 IP-CIDR,43.240.124.0/22,no-resolve
 IP-CIDR,43.240.128.0/22,no-resolve
@@ -111456,8 +111456,7 @@ IP-CIDR,103.238.188.0/22,no-resolve
 IP-CIDR,103.238.204.0/22,no-resolve
 IP-CIDR,103.239.68.0/22,no-resolve
 IP-CIDR,103.239.152.0/22,no-resolve
-IP-CIDR,103.239.184.0/23,no-resolve
-IP-CIDR,103.239.186.0/24,no-resolve
+IP-CIDR,103.239.184.0/22,no-resolve
 IP-CIDR,103.239.192.0/22,no-resolve
 IP-CIDR,103.239.244.0/22,no-resolve
 IP-CIDR,103.240.16.0/22,no-resolve
@@ -111688,7 +111687,6 @@ IP-CIDR,111.235.180.0/23,no-resolve
 IP-CIDR,111.235.182.0/24,no-resolve
 IP-CIDR,112.0.0.0/10,no-resolve
 IP-CIDR,112.64.0.0/14,no-resolve
-IP-CIDR,112.73.96.0/19,no-resolve
 IP-CIDR,112.74.0.0/16,no-resolve
 IP-CIDR,112.80.0.0/12,no-resolve
 IP-CIDR,112.96.0.0/13,no-resolve
@@ -112576,9 +112574,10 @@ IP-CIDR,123.242.192.0/21,no-resolve
 IP-CIDR,123.244.0.0/14,no-resolve
 IP-CIDR,123.249.0.0/17,no-resolve
 IP-CIDR,123.254.96.0/21,no-resolve
+IP-CIDR,124.14.2.0/24,no-resolve
 IP-CIDR,124.14.5.0/24,no-resolve
 IP-CIDR,124.14.6.0/24,no-resolve
-IP-CIDR,124.14.8.0/24,no-resolve
+IP-CIDR,124.14.8.0/23,no-resolve
 IP-CIDR,124.14.12.0/23,no-resolve
 IP-CIDR,124.14.15.0/24,no-resolve
 IP-CIDR,124.14.22.0/24,no-resolve
