@@ -3,14 +3,14 @@
 # GENERATED-BY: scripts/update_direct.py
 # UPSTREAM: SukkaLab/ruleset.skk.moe + Loyalsoldier/surge-rules
 # EXCLUSIONS: direct-exclusions.conf
-# SOURCE-SHA256: 4e786b35cd577c9ad3525d1945c3926767b8a304ae24094989baa78e8091b61b
-# UPSTREAM-DOMAIN-RULES: 110567
-# EXCLUDED-DOMAIN-RULES: 519
+# SOURCE-SHA256: c56bea5684ab230584057bb18ff6eeac1a8a9d15ad375dce484d72038ecff9cf
+# UPSTREAM-DOMAIN-RULES: 110566
+# EXCLUDED-DOMAIN-RULES: 520
 # REDUNDANT-DOMAIN-RULES: 281
-# RETAINED-DOMAIN-RULES: 109767
-# UPSTREAM-IP-RULES: 3890
+# RETAINED-DOMAIN-RULES: 109765
+# UPSTREAM-IP-RULES: 3889
 # EXCLUSION-IP-RULES: 269
-# RETAINED-IPV4-RULES: 3942
+# RETAINED-IPV4-RULES: 3941
 # RETAINED-IPV6-RULES: 0
 # ORDERING: Surge first-match; policy-owned rules MUST precede this fallback
 # POLICY: remove only fully covered domains; partial overlaps are intentional
@@ -16954,6 +16954,7 @@ DOMAIN-SUFFIX,bsdfyyls.com
 DOMAIN-SUFFIX,bsdongxin.com
 DOMAIN-SUFFIX,bsdt1688.com
 DOMAIN-SUFFIX,bsehk.com
+DOMAIN-SUFFIX,bseinfo.net
 DOMAIN-SUFFIX,bseqp.com
 DOMAIN-SUFFIX,bserc.com
 DOMAIN-SUFFIX,bsgcnc.com
@@ -21864,7 +21865,6 @@ DOMAIN-SUFFIX,chuxinhudong.com
 DOMAIN-SUFFIX,chuxinvip.com
 DOMAIN-SUFFIX,chuxueyun.com
 DOMAIN-SUFFIX,chuyaer.com
-DOMAIN-SUFFIX,chuyu.me
 DOMAIN-SUFFIX,chuzhaobiao.com
 DOMAIN-SUFFIX,chvacuum.com
 DOMAIN-SUFFIX,chvoice.com
@@ -35556,14 +35556,12 @@ DOMAIN-SUFFIX,gamegocenter.net
 DOMAIN-SUFFIX,gamehaopu.com
 DOMAIN-SUFFIX,gamehome.tv
 DOMAIN-SUFFIX,gameinns.com
-DOMAIN-SUFFIX,gameitop.com
 DOMAIN-SUFFIX,gamejym.com
 DOMAIN-SUFFIX,gamekee.com
 DOMAIN-SUFFIX,gamekezhan.com
 DOMAIN-SUFFIX,gamekuaishou.com
 DOMAIN-SUFFIX,gamelet.games
 DOMAIN-SUFFIX,gameley.com
-DOMAIN-SUFFIX,gameloop.com
 DOMAIN-SUFFIX,gameloop.fun
 DOMAIN-SUFFIX,gamemale.com
 DOMAIN-SUFFIX,gamemcu.com
@@ -49812,7 +49810,6 @@ DOMAIN-SUFFIX,in-tencentclb.cloud
 DOMAIN-SUFFIX,in-tencentclb.com
 DOMAIN-SUFFIX,in-tencentclb.net
 DOMAIN-SUFFIX,in-tencentclb.work
-DOMAIN-SUFFIX,in.th
 DOMAIN-SUFFIX,in001.com
 DOMAIN-SUFFIX,in66.com
 DOMAIN-SUFFIX,in800.com
@@ -61639,6 +61636,7 @@ DOMAIN-SUFFIX,luyecanyin.com
 DOMAIN-SUFFIX,luyinla.com
 DOMAIN-SUFFIX,luyinzhushou.com
 DOMAIN-SUFFIX,luyitong.com
+DOMAIN-SUFFIX,luyong.com
 DOMAIN-SUFFIX,luyor.net
 DOMAIN-SUFFIX,luyouqi.com
 DOMAIN-SUFFIX,luyouwang.com
@@ -62441,9 +62439,6 @@ DOMAIN-SUFFIX,magook.com
 DOMAIN-SUFFIX,magpiepharma.com
 DOMAIN-SUFFIX,magtechjournal.com
 DOMAIN-SUFFIX,magvision.com
-DOMAIN-SUFFIX,mahjongai.net
-DOMAIN-SUFFIX,mahjongcup.com
-DOMAIN-SUFFIX,mahjongcup.net
 DOMAIN-SUFFIX,mahoupao.com
 DOMAIN-SUFFIX,mahua.com
 DOMAIN-SUFFIX,mai.com
@@ -71892,7 +71887,6 @@ DOMAIN-SUFFIX,protontechcn.com
 DOMAIN-SUFFIX,proup.club
 DOMAIN-SUFFIX,providence-chemicals.com
 DOMAIN-SUFFIX,prowine-shanghai.com
-DOMAIN-SUFFIX,proximabeta.com
 DOMAIN-SUFFIX,proya-group.com
 DOMAIN-SUFFIX,proya.com
 DOMAIN-SUFFIX,proyy.com
@@ -78309,6 +78303,7 @@ DOMAIN-SUFFIX,senpian.com
 DOMAIN-SUFFIX,senra.me
 DOMAIN-SUFFIX,sense-hk.com
 DOMAIN-SUFFIX,senseagro.com
+DOMAIN-SUFFIX,senseavatar.com
 DOMAIN-SUFFIX,senselock.com
 DOMAIN-SUFFIX,senseluxury.com
 DOMAIN-SUFFIX,senser.group
@@ -80561,6 +80556,7 @@ DOMAIN-SUFFIX,shutonginfo.com
 DOMAIN-SUFFIX,shutu.cc
 DOMAIN-SUFFIX,shutwin.com
 DOMAIN-SUFFIX,shuwangxing.com
+DOMAIN-SUFFIX,shuwen.com
 DOMAIN-SUFFIX,shuwenxianyun.com
 DOMAIN-SUFFIX,shuwulou.com
 DOMAIN-SUFFIX,shuxiangmuye.com
@@ -86615,8 +86611,6 @@ DOMAIN-SUFFIX,tetrisone.com
 DOMAIN-SUFFIX,tetuijiudian.com
 DOMAIN-SUFFIX,tevachem.com
 DOMAIN-SUFFIX,tex68.com
-DOMAIN-SUFFIX,texasholdemcup.com
-DOMAIN-SUFFIX,texasholdemcup.net
 DOMAIN-SUFFIX,texpage.com
 DOMAIN-SUFFIX,texpageusercontent.com
 DOMAIN-SUFFIX,texpro-group.com
@@ -87221,6 +87215,7 @@ DOMAIN-SUFFIX,tidejd.com
 DOMAIN-SUFFIX,tidemedia.com
 DOMAIN-SUFFIX,tidepharm.com
 DOMAIN-SUFFIX,tidesec.com
+DOMAIN-SUFFIX,tidesight.com
 DOMAIN-SUFFIX,tideswing.fun
 DOMAIN-SUFFIX,tidi.mobi
 DOMAIN-SUFFIX,tiduyun.com
@@ -90287,6 +90282,7 @@ DOMAIN-SUFFIX,ups88.net
 DOMAIN-SUFFIX,upsapp.com
 DOMAIN-SUFFIX,upseller.com
 DOMAIN-SUFFIX,upskyshanghai.com
+DOMAIN-SUFFIX,upsort.com
 DOMAIN-SUFFIX,upst86.com
 DOMAIN-SUFFIX,uptom.com
 DOMAIN-SUFFIX,uptougu.com
@@ -104088,6 +104084,7 @@ DOMAIN-SUFFIX,yundongfang.com
 DOMAIN-SUFFIX,yundonghao.com
 DOMAIN-SUFFIX,yundongit.com
 DOMAIN-SUFFIX,yundousoft.com
+DOMAIN-SUFFIX,yundouxueyuan.com
 DOMAIN-SUFFIX,yundui.cc
 DOMAIN-SUFFIX,yunduimedia.com
 DOMAIN-SUFFIX,yundun.com
@@ -104737,6 +104734,7 @@ DOMAIN-SUFFIX,yy845.com
 DOMAIN-SUFFIX,yy960.com
 DOMAIN-SUFFIX,yyaotec.com
 DOMAIN-SUFFIX,yyarea.com
+DOMAIN-SUFFIX,yybip.com
 DOMAIN-SUFFIX,yyblly.com
 DOMAIN-SUFFIX,yybnet.net
 DOMAIN-SUFFIX,yybox.cc
@@ -110620,6 +110618,7 @@ IP-CIDR,103.30.151.0/24,no-resolve
 IP-CIDR,103.31.200.0/22,no-resolve
 IP-CIDR,103.35.104.0/22,no-resolve
 IP-CIDR,103.35.254.0/24,no-resolve
+IP-CIDR,103.36.28.0/22,no-resolve
 IP-CIDR,103.36.36.0/22,no-resolve
 IP-CIDR,103.36.63.0/24,no-resolve
 IP-CIDR,103.36.96.0/22,no-resolve
@@ -111316,6 +111315,7 @@ IP-CIDR,111.235.180.0/23,no-resolve
 IP-CIDR,111.235.182.0/24,no-resolve
 IP-CIDR,112.0.0.0/10,no-resolve
 IP-CIDR,112.64.0.0/14,no-resolve
+IP-CIDR,112.73.96.0/19,no-resolve
 IP-CIDR,112.74.0.0/16,no-resolve
 IP-CIDR,112.80.0.0/12,no-resolve
 IP-CIDR,112.96.0.0/13,no-resolve
@@ -113080,11 +113080,7 @@ IP-CIDR,203.195.64.0/19,no-resolve
 IP-CIDR,203.195.128.0/17,no-resolve
 IP-CIDR,203.196.0.0/21,no-resolve
 IP-CIDR,203.202.236.0/23,no-resolve
-IP-CIDR,203.205.64.0/20,no-resolve
-IP-CIDR,203.205.80.0/21,no-resolve
-IP-CIDR,203.205.88.0/22,no-resolve
-IP-CIDR,203.205.92.0/23,no-resolve
-IP-CIDR,203.205.94.0/24,no-resolve
+IP-CIDR,203.205.64.0/19,no-resolve
 IP-CIDR,203.207.64.0/19,no-resolve
 IP-CIDR,203.207.96.0/21,no-resolve
 IP-CIDR,203.207.104.0/22,no-resolve
@@ -113420,6 +113416,7 @@ IP-CIDR,218.98.0.0/18,no-resolve
 IP-CIDR,218.98.96.0/21,no-resolve
 IP-CIDR,218.98.104.0/22,no-resolve
 IP-CIDR,218.98.108.0/23,no-resolve
+IP-CIDR,218.98.111.0/24,no-resolve
 IP-CIDR,218.98.160.0/24,no-resolve
 IP-CIDR,218.98.176.0/24,no-resolve
 IP-CIDR,218.98.192.0/24,no-resolve
