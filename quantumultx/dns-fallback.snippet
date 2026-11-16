@@ -1,0 +1,6 @@
+# Load LAST in [filter_remote], with inserted-resource=false.
+# Keep this out of [filter_local]: local catch-all rules can shadow remote filters.
+# Match otherwise-unmatched dotted hostnames before DNS-based IP fallback.
+# Pure IP requests do not match; keep final, global in [filter_local].
+# global must select a proxy server; direct still needs local DNS resolution.
+host-keyword, ., global
